@@ -1,2 +1,2 @@
 #!/bin/bash
-paste -d '\n' /etc/passwd /etc/hosts
+cat /etc/passwd /etc/hosts
