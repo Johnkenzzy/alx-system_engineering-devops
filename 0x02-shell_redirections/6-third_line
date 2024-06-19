@@ -1,2 +1,2 @@
 #!/bin/bash
-head -3 /etc/passwd | tail +3
+awk 'NR==3' /etc/passwd
