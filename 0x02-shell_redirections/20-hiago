@@ -1,2 +1,2 @@
 #!/bin/bash
-tr -d 'cC' < input.txt
+tr -d 'cC
