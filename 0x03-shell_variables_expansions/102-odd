@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1 | nl -ba | grep -E '^[[:space:]]*[0-9]*[02468][[:space:]]' | cut -f2-
+paste -d '\n' - - < "$1"
