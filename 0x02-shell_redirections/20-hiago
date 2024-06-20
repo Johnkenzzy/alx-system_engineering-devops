@@ -1,2 +1,2 @@
 #!/bin/bash
-echo 'YourInputHere' | tr -d 'cC'
+tr -d 'cC' < input
