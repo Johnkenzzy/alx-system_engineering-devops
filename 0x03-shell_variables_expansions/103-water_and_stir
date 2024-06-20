@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "ibase=water; $WATER" | bc | echo "ibase=stir; $STIR" | bc | echo "obase=bestchol; $(cat)" | bc
