@@ -1,2 +1,2 @@
 #!/bin/bash
-awk 'NR % 2 == 1'
+ls -1 | paste -d '\n' - - | cut -f 1 -d '\n'
