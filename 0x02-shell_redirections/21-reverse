@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "your input text" | rev
+echo $input | rev
