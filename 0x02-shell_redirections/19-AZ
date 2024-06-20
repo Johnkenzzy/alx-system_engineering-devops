@@ -1,2 +1,2 @@
 #!/bin/bash
-echo " " | tr 'Ac' 'Ze'
+echo "$1" | tr 'Ac' 'Ze'
