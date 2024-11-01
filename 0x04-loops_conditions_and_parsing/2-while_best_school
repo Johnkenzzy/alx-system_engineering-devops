@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Looping a particular text using while loop
+# This script is displaying "Best School" 10 times using while loop
 
 count=1
 
