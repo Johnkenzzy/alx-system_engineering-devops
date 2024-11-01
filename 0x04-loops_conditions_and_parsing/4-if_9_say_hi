@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10, displays "Hi" at the 9th
+
+count=1
+
+while [ $count -le 10 ]; do
+    echo "Best School"
+    if [ $count -eq 9 ]; then
+        echo "Hi"
+    fi
+    count=$((count + 1))
+done
