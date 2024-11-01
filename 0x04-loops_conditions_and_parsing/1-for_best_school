@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Using for loop to loop display a text
+# This script is displaying "Best School" 10 times
 
-for ((i=0; i<10; i++)); do
+for _ in $(seq 1 10); do
     echo "Best School"
 done
