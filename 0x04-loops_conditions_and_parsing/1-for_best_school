@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Using for loop to loop over text
+
+for _ in {1..10}; do
+    echo "Best School"
+done
