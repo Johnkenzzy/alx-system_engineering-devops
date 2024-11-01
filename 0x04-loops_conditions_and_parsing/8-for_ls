@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This script displays the contents of the current directory, showing names
+
+for file in *; do
+
+    if [[ "$file" == *-* ]]; then
+
+        name_after_dash="${file#*-}"
+        echo "$name_after_dash"
+    fi
+done
+
