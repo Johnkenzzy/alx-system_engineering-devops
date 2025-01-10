@@ -28,7 +28,6 @@ Puppet is a popular configuration management (CM) tool that automates the manage
 
 - Example:
 ```puppet
-Copy code
 package { 'apache2':
   ensure => installed,
 }
