@@ -4,8 +4,11 @@ package { 'python3-pip':
 }
 
 # This manifest installs flask vision 2.1.0 from pip3
-package { 'Flask':
-  ensure          => '2.1.0',
-  provider        => 'pip',
-  install_options => ['--pip-command', '/usr/bin/pip3'],
+package { 'flask':
+  ensure   => '2.1.0',
+  provider => 'pip3',
+}
+package { 'werkzeug':
+  ensure   => '2.1.1',
+  provider => 'pip3',
 }
