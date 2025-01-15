@@ -13,4 +13,7 @@ sed -i '/server_name _;/a \\n    location /redirect_me {\n        return 301 htt
 nginx -t
 
 # Reload Nginx to apply the changes
-service nginx reload
+nginx -s reload
+
+# Ensure Nginx is running
+nginx

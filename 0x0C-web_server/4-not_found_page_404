@@ -15,4 +15,7 @@ sed -i '/server_name _;/a \\n    error_page 404 /custom_404.html;\n    location 
 nginx -t
 
 # Reload Nginx to apply the changes
-service nginx reload
+nginx -s reload
+
+# Ensure Nginx is running
+nginx
