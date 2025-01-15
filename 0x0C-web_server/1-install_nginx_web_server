@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Configures a new Ubuntu machine to install and set up Nginx
+# to return "Hello World!" at the root.
+
+# Exit on any error
+set -e
+
+# Update package lists and install Nginx
+apt-get update -y
+apt-get install -y nginx
+
+# Configure Nginx to display "Hello World!" on the root page
+echo "Hello World!" > /var/www/html/index.html
+
+# Modify Nginx configuration to ensure it listens on port 80
+sed -i 's/listen 80 default_server;/listen 80;/' /etc/nginx/sites-available/default
+
+# Restart Nginx to apply changes
+nginx -s reload
+
+# Make sure Nginx is running
+nginx
