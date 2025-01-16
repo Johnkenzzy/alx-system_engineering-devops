@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Install and configure apache on docker container
+
+# Install apache
+apt update
+apt install apache2 -y
+
+# Start the installed apache
+apachectl start
+
+# Configuration
+echo "Hello ALX" > /var/www/html/index.html
