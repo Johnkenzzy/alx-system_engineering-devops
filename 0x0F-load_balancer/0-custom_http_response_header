@@ -2,8 +2,10 @@
 # Script to add a custom HTTP response header to the Nginx configuration
 
 # Update and install Nginx if not already installed
-sudo apt-get update -y
-sudo apt-get install -y nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+ufw allow 'Nginx HTTP'
 
 # Get the hostname
 HOSTNAME=$(hostname)
@@ -18,4 +20,4 @@ fi
 sudo nginx -t
 
 # Restart Nginx to apply the changes
-sudo systemctl restart nginx
+service nginx restart
