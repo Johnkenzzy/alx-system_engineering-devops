@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Install and configure HAproxy 3.0-stable LTS on ubuntu 20.04 LTS server.
+SERVER-01=$()
+
+# Update apt package
+sudo apt update
+
+# Enable a dedicated PPA with the following commands:
+sudo apt-get install -y --no-install-recommends software-properties-commonsudo add-apt-repository ppa:vbernat/haproxy-3.0 -y
+
+# Install HAproxy 3.0
+sudo apt-get install -y haproxy=3.0.\*
+
+
+# Add frontend and backend configuration to HAProxy
+sudo bash -c 'cat >> /etc/haproxy/haproxy.cfg' <<EOF
+
+# Frontend
+frontend http_front
+    bind *:80
+    default_backend web_servers
+
+# Backend
+backend web_servers
+    balance roundrobin
+    option httpchk
+    server web-01 54.144.249.38 check
+    server web-02 54.90.63.175 check
+EOF
+
+# Restart HAProxy to apply the changes
+sudo systemctl restart haproxy
