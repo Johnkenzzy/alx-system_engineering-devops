@@ -18,9 +18,12 @@ frontend http_front
 backend web_servers
     balance roundrobin
     option httpchk
-    server web-01 54.144.249.38 check
-    server web-02 54.90.63.175 check
+    server 806447-web-01 54.144.249.38 check
+    server 806447-web-02 54.90.63.175 check
 EOF
 
+# enable haproxy to be started by init script
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+
 # Restart HAProxy to apply the changes
-sudo service haproxy restart
+service haproxy restart
