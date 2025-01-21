@@ -12,14 +12,14 @@ sudo bash -c 'cat >> /etc/haproxy/haproxy.cfg' <<EOF
 # Frontend
 frontend http_front
     bind *:80
+    mode http
     default_backend web_servers
 
 # Backend
 backend web_servers
     balance roundrobin
-    option httpchk
-    server 806447-web-01 54.144.249.38 check
-    server 806447-web-02 54.90.63.175 check
+    server 806447-web-01 54.144.249.38:80 check
+    server 806447-web-02 54.90.63.175:80 check
 EOF
 
 # enable haproxy to be started by init script
