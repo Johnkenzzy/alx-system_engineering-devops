@@ -1,37 +1,28 @@
 # Puppet manifest to configure Nginx with a custom HTTP header
-class custom_http_header {
-  package { 'nginx':
-    ensure => installed,
-  }
 
-  service { 'nginx':
-    ensure    => running,
-    enable    => true,
-    subscribe => File['/etc/nginx/sites-available/default'],
-  }
-
-  file { '/etc/nginx/sites-available/default':
-    ensure  => file,
-    content => template('custom_http_header/nginx_default.erb'),
-    notify  => Service['nginx'],
-  }
+# Ensure the system is updated and Nginx is installed
+exec { 'update-apt':
+  command => '/usr/bin/apt-get update -y',
+  path    => ['/usr/bin', '/usr/sbin'],
+  unless  => '/usr/bin/test -f /var/lib/apt/periodic/update-success-stamp',
 }
 
-node default {
-  include custom_http_header
+package { 'nginx':
+  ensure  => installed,
+  require => Exec['update-apt'],
 }
 
-server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+# Add the custom HTTP header to Nginx configuration
+file_line { 'add_custom_http_header':
+  path    => '/etc/nginx/nginx.conf',
+  match   => '^http {',
+  line    => "http {\n    add_header X-Served-By \"${facts['networking']['hostname']}\";",
+  require => Package['nginx'],
+}
 
-    root /var/www/html;
-    index index.html;
-
-    server_name _;
-
-    location / {
-        add_header X-Served-By '<%= @hostname %>';
-        try_files $uri $uri/ =404;
-    }
+# Restart Nginx service to apply changes
+service { 'nginx':
+  ensure    => running,
+  enable    => true,
+  subscribe => File_line['add_custom_http_header'],
 }
