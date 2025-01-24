@@ -18,11 +18,11 @@ dns_record() {
 domain="$1"
 subdomain="$2"
 
-if [[ -n "$subdomain" ]]; then
-  dns_record "$subdomain.$domain" "$subdomain"
-else
+if [ "$#" == 1 ]; then
   subdomain_list=("www" "lb-01" "web-01" "web-02")
   for sub in "${subdomain_list[@]}"; do
     dns_record "$sub.$domain" "$sub"
   done
+elif [ "$#" == 2 ]; then
+  dns_record "$subdomain.$domain" "$subdomain"
 fi
