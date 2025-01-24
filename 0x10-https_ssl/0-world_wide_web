@@ -18,10 +18,6 @@ dns_record() {
 domain="$1"
 subdomain="$2"
 
-if [[ -z "$domain" ]]; then
-  exit 1
-fi
-
 if [[ -n "$subdomain" ]]; then
   dns_record "$subdomain.$domain" "$subdomain"
 else
