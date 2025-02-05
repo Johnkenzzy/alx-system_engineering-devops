@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#Fix this container so that Nginx is running as the nginx user.
+
+sed -i 's/^user .*;/user nginx;/' /etc/nginx/nginx.conf
+sed -i 's/listen 80;/listen 0.0.0.0:8080;/' /etc/nginx/sites-available/default
+systemctl restart nginx
+ps auxff | grep ngin[x]
+nc -z 0 8080
