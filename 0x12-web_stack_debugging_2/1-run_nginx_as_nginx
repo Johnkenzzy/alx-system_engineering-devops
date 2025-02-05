@@ -1,30 +1,7 @@
 #!/usr/bin/env bash
 # Fix this container so that Nginx is running as the nginx user.
-
-# Update nginx.conf to run as nginx user and group
-NGINX_CONF="/etc/nginx/nginx.conf"
-
-# Modify the user and group to nginx in the nginx.conf if it's not already set
-if ! grep -q "^user nginx;" $NGINX_CONF; then
-    sed -i 's/^user .*;/user nginx;/' $NGINX_CONF
-fi
-
-# Step 2: Configure Nginx to listen on port 8080 on all active IPs
-
-# Modify the listen directive in the default server block
-SERVER_CONF="/etc/nginx/sites-available/default"
-
-# Check if the listen directive is set correctly, and if not, set it
-if ! grep -q "listen 0.0.0.0:8080;" $SERVER_CONF; then
-    sed -i 's/listen 80;/listen 0.0.0.0:8080;/' $SERVER_CONF
-fi
-
-# Step 3: Restart Nginx to apply changes
-systemctl restart nginx
-
-# Step 4: Verify if Nginx is running as 'nginx' user and listening on the correct port
-ps auxff | grep ngin[x]
-
-# Check if Nginx is listening on port 8080
-nc -z 0 8080 && echo "Nginx is listening on port 8080" || echo "Nginx is not listening on port 8080"
-
+pkill apache2
+chown nginx:nginx /etc/nginx/nginx.conf
+chmod 777 /etc/nginx/nginx.conf
+sed -i 's/80/8080/g' /etc/nginx/sites-available/default
+sudo -u nginx service nginx start

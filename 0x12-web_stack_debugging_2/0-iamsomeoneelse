@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # Takes the argument given as the user
-sudo -u $1 whoami
+sudo -u "$1" whoami
+
