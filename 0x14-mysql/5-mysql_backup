@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Backs up a all database and compresses it to a tar.gz archive.
 
-mysqldump -u root -p "$1" --all-databases > backup.sql
+mysqldump -u root -p$1 --all-databases > backup.sql
 
 input_file="backup.sql"
 current_date=$(date +%d-%m-%Y)
