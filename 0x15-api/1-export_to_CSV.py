@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
 Returns information about an employee's TODO list progress.
+And export data to CSV format
 """
 import csv
 import requests
