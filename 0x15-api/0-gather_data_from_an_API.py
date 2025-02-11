@@ -2,8 +2,8 @@
 """
 Returns information about an employee's TODO list progress.
 """
-import sys
 import requests
+import sys
 
 
 if __name__ == '__main__':
@@ -22,9 +22,9 @@ if __name__ == '__main__':
         for todo in todos:
             if todo['completed']:
                 completed += 1
-        print(f'Employee {name} is done with tasks({completed}/{total})')
+        print(f'Employee {name} is done with tasks({completed}/{total}):')
 
         for todo in todos:
-            print(f"\t {todo['title']}")
+            print(f"     {todo['title']}")
     except Exception as e:
         print(f'Error: {e}')
