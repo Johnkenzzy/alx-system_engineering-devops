@@ -7,7 +7,7 @@ import requests
 def number_of_subscribers(subreddit):
     """Returns the number of subscribers (not active and total subscribers)"""
 
-    url = f'https://www.reddit.com/r/{subreddit}/about.json'
+    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
     headers = {"User-Agent": "ALX"}
 
     try:
