@@ -1,4 +1,4 @@
-# Nginx configurarion to serve your page from the routes /airbnb-onepage/
+# Nginx configurarion to serve your page from the routes /airbnb-onepage/rewrite ^/rewriteme/(.*)$ /$1 last;
 # and /number_odd_or_even/<int:n>
 
 server {
