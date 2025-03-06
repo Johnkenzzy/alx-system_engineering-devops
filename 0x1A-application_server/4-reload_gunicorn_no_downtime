@@ -2,7 +2,8 @@
 # Reloads Gunicorn in a graceful way.
 
 # Find the Gunicorn master process ID
-GUNICORN_MASTER_PID=$(pgrep -f "gunicorn" | head -n 1)
+# GUNICORN_MASTER_PID=$(pgrep -f "gunicorn" | head -n 1)
+GUNICORN_MASTER_PID=$(ps aux | grep '[g]unicorn' | awk '{print $2}')
 
 if [ -n "$GUNICORN_MASTER_PID" ]; then
     kill -HUP "$GUNICORN_MASTER_PID"
